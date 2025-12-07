@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Memory Timeline ⏳</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+  #hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .heart {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      animation: fly 1.2s linear forwards;
+      font-size: 20px;
+      pointer-events: none;
+      opacity: 1;
+    }
+
+    @keyframes fly {
+      0%   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%, -150%) scale(1.8); opacity: 0; }
+    }
+
+  </style>
+  
+</head>
+
+<body class="page3">
+
+  <!-- HEART TRAIL FOLLOW MOUSE -->
+  <div id="hearts"></div>
+
+  <h2 class="glow-text">Our Journey Through Time 🕰️</h2>
+
+  <div class="timeline">
+    <div><span>🌟 2022:</span> When we first met — life changed — insta story 26th June.</div>
+
+    <div><span>💫 2023:</span>  
+      When we met face to face first time at Kudrati (27th May). <br>
+      After long time msg by him (8th March). <br>
+      First time met alone at Chaipila Cafe (8th December).
+    </div>
+
+    <div><span>😊 2024:</span> 
+      When first time met at his home (10th May). <br>
+      First time meet in Ahmedabad at McD (21st August). <br>
+      Last time met after long break (14th August). <br>
+      Second time met after the fight at Gujarat University (1st October). <br>
+      First pic together (27th May). <br>
+      Finally we are in relation (3rd December).
+    </div>
+
+    <div><span>🎂 Today:</span> Celebrating YOU, the most special soul ever.</div>
+  </div>
+
+  <a class="button" href="quiz.html">Next: Fun Quiz 🎉</a>
+
+  <!-- ❤️ HEART TRAIL SCRIPT -->
+ <script>
+    const hearts = document.getElementById("hearts");
+
+    window.addEventListener("mousemove", (e) => {
+        addHeart(e.clientX, e.clientY);
+    });
+
+    function addHeart(x, y) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+
+        const colors = ["#ff7ab6", "#ffb7d1", "#ffd36b", "#7dd3fc", "#a78bfa"];
+        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+        heart.style.fontSize = (14 + Math.random() * 16) + "px";
+
+        const offset = (Math.random() - 0.5) * 30;
+
+        heart.textContent = "❤";
+        heart.style.left = (x + offset) + "px";
+        heart.style.top = y + "px";
+
+        hearts.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 1200);
+    }
+  </script>
+
+</body>
+</html>

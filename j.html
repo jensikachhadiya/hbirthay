@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secret Message 🔐</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page2">
+  <div class="heart-container"></div>
+  <h2 class="glow-text">Enter the Magic Word ✨</h2>
+  <input type="text" id="password" placeholder="Your nickname" /><br>
+  <button onclick="checkPassword()">Unlock 💙</button>
+  <p id="hiddenMsg" style="display:none; margin-top: 2rem; font-size: 1.2rem;">
+    🥺 You made it till here. Just know that I love you endlessly and you are the most precious soul in my life. <br>Happiest born day once again, my everything. 🌹🎂💫
+  </p>
+  <script>
+    function checkPassword() {
+      const pass = document.getElementById('password').value.toLowerCase();
+      if (pass.includes("hiru") || pass.includes("vandro")) {
+        document.getElementById('hiddenMsg').style.display = "block";
+      } else {
+        alert("Oops! Try your nickname 😉");
+      }
+    }
+  </script>
+  <div>
+    <a class="button" href="birthdaycard.html">happiest born day</a>
+  </div>
+</body>
+</html>

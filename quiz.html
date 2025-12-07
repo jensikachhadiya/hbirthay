@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Time 🎉</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .correct {
+      background-color: #66ff66 !important;
+    }
+    .incorrect {
+      background-color: #ff6666 !important;
+    }
+    .answer-message {
+      color: #ffd700;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  #hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .heart {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      animation: fly 1.2s linear forwards;
+      font-size: 20px;
+      pointer-events: none;
+      opacity: 1;
+    }
+
+    @keyframes fly {
+      0%   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%, -150%) scale(1.8); opacity: 0; }
+    }
+    </style>
+    </head>
+
+<body class="page2">
+
+  <!-- Heart trail container -->
+  <div id="hearts"></div>
+
+  <h2 class="glow-text">How Well Do You Know Me? 💭</h2>
+
+  <div id="quiz">
+
+    <div class="question">
+      <p>1. What’s my favorite drink?</p>
+      <button onclick="checkAnswer(this, true, this.parentNode)">Tea 🍵</button>
+      <button onclick="checkAnswer(this, false, this.parentNode)">Cold Coffee ☕🧊</button>
+    </div>
+
+    <div class="question">
+      <p>2. What nickname do I call you most?</p>
+      <button onclick="checkAnswer(this, true, this.parentNode)">Vandro 🐵</button>
+      <button onclick="checkAnswer(this, false, this.parentNode)">Hiru 🙋‍♂️</button>
+    </div>
+
+    <div class="question">
+      <p>3. What’s my comfort food?</p>
+      <button onclick="checkAnswer(this, false, this.parentNode)">Pizza 🍕</button>
+      <button onclick="checkAnswer(this, true, this.parentNode)">Frenchfry 🍟</button>
+    </div>
+
+    <div class="question">
+      <p>4. What would I choose for a perfect day?</p>
+      <button onclick="checkAnswer(this, true, this.parentNode)">Shopping + Crowded Mall 🛍️</button>
+      <button onclick="checkAnswer(this, false, this.parentNode)">Cuddling + Talks + Music 🎶</button>
+    </div>
+
+    <div class="question">
+      <p>5. What makes me smile the most?</p>
+      <button onclick="checkAnswer(this, true, this.parentNode)">Eating food 😋🍽️</button>
+      <button onclick="checkAnswer(this, false, this.parentNode)">Random silly jokes 🤪</button>
+    </div>
+
+  </div>
+
+  <p id="result"></p>
+  <a class="button" href="secret.html">Final Secret Message 🔐</a>
+
+  <script>
+    let score = 0;
+    let totalQuestions = 5;
+    let answered = 0;
+
+    function checkAnswer(btn, correct, container) {
+      let buttons = container.querySelectorAll("button");
+      buttons.forEach(b => b.disabled = true);
+
+      if (correct) {
+        score++;
+        btn.classList.add("correct");
+      } else {
+        btn.classList.add("incorrect");
+      }
+
+      let correctBtn = Array.from(buttons).find(b => b.onclick.toString().includes("true"));
+      correctBtn.classList.add("correct");
+
+      const correctText = correctBtn.innerText;
+      let message = document.createElement("p");
+      message.classList.add("answer-message");
+      message.innerText = `Correct answer was: ${correctText}`;
+      container.appendChild(message);
+
+      answered++;
+      if (answered === totalQuestions) {
+        let result = document.getElementById('result');
+        if (score === totalQuestions) {
+          result.innerText = 'You know me better than anyone 😭❤️';
+        } else if (score >= 3) {
+          result.innerText = `Aww, you did great! Score: ${score}/${totalQuestions} 💖`;
+        } else {
+          result.innerText = `You need to spend more time with me 😜 Score: ${score}/${totalQuestions}`;
+        }
+      }
+    }
+
+    /* ❤️ HEART TRAIL SCRIPT */
+    const hearts = document.getElementById("hearts");
+
+    window.addEventListener("mousemove", (e) => {
+        addHeart(e.clientX, e.clientY);
+    });
+
+    function addHeart(x, y) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+
+        const colors = ["#ff7ab6", "#ffb7d1", "#ffd36b", "#7dd3fc", "#a78bfa"];
+        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+        heart.style.fontSize = (14 + Math.random() * 16) + "px";
+
+        const offset = (Math.random() - 0.5) * 30;
+
+        heart.textContent = "❤";
+        heart.style.left = (x + offset) + "px";
+        heart.style.top = y + "px";
+
+        hearts.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 1200);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+/* 🌸 Base Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+  height: 100%;
+ background: linear-gradient(to bottom, #87CEEB, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.page1, .page2, .page3 {
+  position: relative;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+/* 💖 Background Hearts */
+.heart-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('hearts.gif') center center / cover no-repeat;
+  opacity: 0.15;
+  z-index: -1;
+}
+
+/* 🌟 Headings */
+.glow-text {
+  font-size: 3rem;
+  color: #5DADEC;
+  text-shadow: 0 0 8px #A1C4FD, 0 0 15px #87CEEB;
+  margin-bottom: 1.5rem;
+}
+
+/* ✨ Subtitle */
+.subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* 💌 Button */
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color:#5DADEC;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 25px;
+  box-shadow:  0 0 8px #A1C4FD, 0 0 15px #87CEEB;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow:  0 0 8px #A1C4FD, 0 0 15px #87CEEB;
+}
+
+/* 📸 Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.2rem;
+    padding: 2rem 1rem;
+  }
+
+  .gallery-img {
+    width: 150px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    opacity: 0;               /* Start hidden */
+    transform: translateY(20px);
+    filter: blur(6px);
+    transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
+  }
+
+  .show {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  .gallery-img:hover {
+    transform: scale(1.1) rotate(1deg);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+  }
+
+/* 💬 Messages */
+.message {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: #444;
+}
+
+.letter-content {
+  max-width: 700px;
+  margin: 0 auto;
+  animation: fadein 2s;
+  padding: 0 1rem;
+}
+
+.closing {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  color: #d63384;
+}
+
+/* 🧠 Quiz Styles */
+.correct {
+  background-color: #66ff66 !important;
+}
+
+.incorrect {
+  background-color: #ff6666 !important;
+}
+
+.answer-message {
+  color:#5DADEC;
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 16px;
+  text-shadow:  0 0 8px #A1C4FD, 0 0 15px #87CEEB;
+}
+
+/* 💌 Typewriter */
+.typewriter {
+  font-size: 1.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #ff4da6;
+  width: 0;
+  animation: typing 5s steps(50, end) forwards;
+}
+
+@keyframes typing {
+  to { width: 100%; }
+}
+
+/* ✨ Fade Animation */
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📃 Reason List */
+.reasons {
+  text-align: left;
+  margin: 2rem auto;
+  max-width: 600px;
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 2rem;
+  padding-left: 1.2rem;
+}
+
+/* 🕰️ Timeline */
+.timeline {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: left;
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.8rem;
+}
+
+/* 🔒 Secret Message Input */
+#password {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border:#5DADEC;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 300px;
+}
+
+/* 🔸 Responsive Styles */
+@media (max-width: 992px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .glow-text {
+    font-size: 2.3rem;
+  }
+
+  .subtitle,
+  .message,
+  .answer-message {
+    font-size: 1rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.1rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .letter-content {
+    padding: 0 1rem;
+  }
+
+  .timeline {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .reasons {
+    font-size: 1.05rem;
+    line-height: 1.6rem;
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body, html {
+    font-size: 90%;
+  }
+
+  .glow-text {
+    font-size: 1.8rem;
+    padding: 0 1rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .gallery-img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .typewriter {
+    font-size: 1.4rem;
+  }
+
+  .button {
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .timeline div {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .reasons li {
+    font-size: 1rem;
+    line-height: 1.6rem;
+  }
+
+  #password {
+    width: 90%;
+  }
+
+ 

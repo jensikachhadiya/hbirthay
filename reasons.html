@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>10 Reasons I Love You 💖</title>
+ <link rel="stylesheet" href="style.css" />
+  <style>
+  #hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .heart {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      animation: fly 1.2s linear forwards;
+      font-size: 20px;
+      pointer-events: none;
+      opacity: 1;
+    }
+
+    @keyframes fly {
+      0%   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%, -150%) scale(1.8); opacity: 0; }
+    }
+
+  </style>
+  
+</head>
+<body class="page2">
+
+  <!-- HEART TRAIL -->
+  <div id="hearts"></div>
+
+  <h2 class="glow-text">10 Reasons Why I Love You 😘</h2>
+
+  <ol class="reasons">
+    <li>Your smile makes everything better 😊</li>
+    <li>You listen without judging 😇</li>
+    <li>You’re always there — no matter what 💙</li>
+    <li>You bring out the best in me 🌈</li>
+    <li>Your hugs feel like home 🤗</li>
+    <li>You’re insanely funny 😂</li>
+    <li>We vibe like no one else 💫</li>
+    <li>You support me even in silence 🤍</li>
+    <li>We have the best memories together 📸</li>
+    <li>Because… you’re you — my everything 🥺</li>
+  </ol>
+
+  <a class="button" href="timeline.html">Next: Our Timeline ⏳</a>
+
+  <!-- HEART CURSOR JS -->
+  <script>
+    const hearts = document.getElementById("hearts");
+
+    window.addEventListener("mousemove", (e) => {
+        addHeart(e.clientX, e.clientY);
+    });
+
+    function addHeart(x, y) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+
+        const colors = ["#ff7ab6", "#ffb7d1", "#ffd36b", "#7dd3fc", "#a78bfa"];
+        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+        heart.style.fontSize = (14 + Math.random() * 16) + "px";
+
+        const offset = (Math.random() - 0.5) * 30;
+
+        heart.textContent = "❤";
+        heart.style.left = (x + offset) + "px";
+        heart.style.top = y + "px";
+
+        hearts.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 1200);
+    }
+  </script>
+
+</body>
+</html>
